@@ -7,6 +7,15 @@ import ServiceSecondaryPage from '../../templates/ServiceSecondaryPage.astro';
 import PricingPage from '../../templates/PricingPage.astro';
 import ContactPage from '../../templates/ContactPage.astro';
 
+export async function getStaticPaths() {
+  // Pour l'instant, on génère uniquement les 3 pages FR EcoFunDrive de test.
+  return [
+    { params: { lang: 'fr', slug: 'chauffeur-prive-cote-d-azur' } },
+    { params: { lang: 'fr', slug: 'vtc-luxe-cote-d-azur' } },
+    { params: { lang: 'fr', slug: 'vtc-nice' } }
+  ];
+}
+
 const { lang, slug } = Astro.params;
 const siteId = 'ecofundrive'; // premier site branché, plus tard configurable
 
