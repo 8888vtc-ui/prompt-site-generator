@@ -48,18 +48,19 @@ const { content } = Astro.props as Props;
 const internalLinks = content.internal_links || [];
 const heroImage = content.hero_image;
 const hasWhatsapp = !!siteConfig.whatsappUrl;
+const fallbackHeroSrc =
+  'https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=1200';
+const fallbackHeroAlt = content.title;
 ---
 <HeaderNav links={internalLinks} />
 <main>
   <h1>{content.title}</h1>
-  {heroImage && (
-    <img
-      src={heroImage.src || 'https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=1200'}
-      alt={heroImage.alt}
-      class="hero-image"
-      loading="lazy"
-    />
-  )}
+  <img
+    src={heroImage?.src || fallbackHeroSrc}
+    alt={heroImage?.alt || fallbackHeroAlt}
+    class="hero-image"
+    loading="lazy"
+  />
   <section class="intro-section">
     <p>{content.introduction}</p>
   </section>
