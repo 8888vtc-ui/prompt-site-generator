@@ -1,6 +1,7 @@
 ---
 import HeaderNav from '../components/HeaderNav.astro';
 import FooterNav from '../components/FooterNav.astro';
+import { siteConfig } from '../config/site';
 
 interface SubSection {
   title: string;
@@ -24,12 +25,18 @@ interface InternalLink {
   context?: string;
 }
 
+interface HeroImage {
+  src?: string;
+  alt: string;
+}
+
 interface Content {
   title: string;
   introduction: string;
   sections: Section[];
   faq: FAQItem[];
   internal_links?: InternalLink[];
+  hero_image?: HeroImage;
 }
 
 interface Props {
@@ -39,19 +46,39 @@ interface Props {
 
 const { content } = Astro.props as Props;
 const internalLinks = content.internal_links || [];
+const heroImage = content.hero_image;
+const hasWhatsapp = !!siteConfig.whatsappUrl;
 ---
 <HeaderNav links={internalLinks} />
 <main>
   <h1>{content.title}</h1>
-  <img
-    src="https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=1200"
-    alt="Chauffeur privé haut de gamme sur la Côte d'Azur"
-    class="hero-image"
-    loading="lazy"
-  />
+  {heroImage && (
+    <img
+      src={heroImage.src || 'https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=1200'}
+      alt={heroImage.alt}
+      class="hero-image"
+      loading="lazy"
+    />
+  )}
   <section>
     <p>{content.introduction}</p>
   </section>
+
+  {hasWhatsapp && (
+    <section class="cta-section">
+      <p>
+        {siteConfig.primaryCtaLabel} pour organiser vos trajets sur-mesure sur la Côte d'Azur.
+      </p>
+      <a
+        href={siteConfig.whatsappUrl}
+        class="btn-whatsapp-large"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {siteConfig.primaryCtaLabel}
+      </a>
+    </section>
+  )}
 
   {content.sections.map((section) => (
     <section>

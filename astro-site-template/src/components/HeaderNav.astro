@@ -1,4 +1,6 @@
 ---
+import { siteConfig } from '../config/site';
+
 interface InternalLink {
   anchor: string;
   url: string;
@@ -11,15 +13,27 @@ interface Props {
 
 const { links = [] } = Astro.props as Props;
 const mainMenuLinks = links.slice(0, 5);
+const hasWhatsapp = !!siteConfig.whatsappUrl;
 ---
-<header>
-  <nav>
-    <ul>
+<header class="site-header">
+  <nav class="site-header-inner">
+    <div class="site-brand">{siteConfig.brandName}</div>
+    <ul class="site-main-menu">
       {mainMenuLinks.map((link) => (
         <li>
           <a href={link.url}>{link.anchor}</a>
         </li>
       ))}
     </ul>
+    {hasWhatsapp && (
+      <a
+        href={siteConfig.whatsappUrl}
+        class="btn-whatsapp"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {siteConfig.primaryCtaLabel}
+      </a>
+    )}
   </nav>
 </header>
