@@ -155,6 +155,21 @@ L'objectif du projet est que **le déploiement d'un site génère tout automatiq
 - **Menus / maillage interne** : liens internes suffisants pour construire header/footer, pages pilier, localités, pages légales, etc.
 - **Fichiers techniques** : structure de dossiers, JSON, et, côté site final, intégration dans les templates Astro + configuration Netlify.
 
+À terme, la génération inclura également des **métadonnées d'images** (ex : `hero_image`) :
+
+- description textuelle de l'image souhaitée (alignée avec le service et la zone ciblée),
+- texte alternatif SEO‑friendly (avec le mot‑clé principal au maximum une fois),
+- prompt détaillé pour un générateur d'images (type Replicate),
+- en respectant des règles strictes : **pas de noms de lieux visibles**, pas de panneaux ou logos reconnaissables, pas de visages identifiables, pas d'immatriculations lisibles.
+
+Les **CTA front-end** (nom de marque, libellé du bouton principal, URL WhatsApp) sont pilotés par des variables d'environnement au niveau du site Astro :
+
+- `SITE_BRAND_NAME` : nom affiché dans le header (ex : "ECOFUNDRIVE").
+- `SITE_PRIMARY_CTA_LABEL` : texte du bouton principal (ex : "Demander un devis par WhatsApp").
+- `WHATSAPP_URL` : URL complète vers la conversation WhatsApp préremplie.
+
+Chaque site Netlify utilisant le générateur peut ainsi personnaliser son identité visuelle et son CTA sans modifier le code source du générateur.
+
 Des **scripts Node** (par exemple `scripts/generate-<site>-batch.ts` et variantes "fast") orchestrent cette génération de bout en bout. À terme, ces scripts seront appelés par une API/endpoint derrière un formulaire (ex : formulaire EcoFunDrive V1) pour aller **du formulaire → génération complète → déclenchement du build Netlify**.
 
 On peut conserver dans le dépôt une **bibliothèque d'exemples** (blocs de mise en page, styles de base, structures de menus) que GPT‑4 peut utiliser comme références / inspirations. Mais par défaut, pour chaque nouveau site, **tout doit être généré et cohérent avec le profil** (activité, template de page, zone géographique), sans copier/coller aveugle depuis un autre projet.

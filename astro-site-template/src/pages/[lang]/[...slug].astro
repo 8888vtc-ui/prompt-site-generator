@@ -1,4 +1,3 @@
----
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SeoHead from '../../layouts/SeoHead.astro';
 import ServicePillarPage from '../../templates/ServicePillarPage.astro';
@@ -6,18 +5,40 @@ import LocationPage from '../../templates/LocationPage.astro';
 import ServiceSecondaryPage from '../../templates/ServiceSecondaryPage.astro';
 import PricingPage from '../../templates/PricingPage.astro';
 import ContactPage from '../../templates/ContactPage.astro';
+import fs from 'node:fs/promises';
+import path from 'node:path';
 
 export async function getStaticPaths() {
-  // Pour l'instant, on génère uniquement les 3 pages FR EcoFunDrive de test.
-  return [
-    { params: { lang: 'fr', slug: 'chauffeur-prive-cote-d-azur' } },
-    { params: { lang: 'fr', slug: 'vtc-luxe-cote-d-azur' } },
-    { params: { lang: 'fr', slug: 'vtc-nice' } }
-  ];
+  const siteId = import.meta.env.SITE_ID || 'ecofundrive';
+  const baseDir = new URL(`../../content/sites/${siteId}/`, import.meta.url).pathname;
+
+  const entries = [] as { params: { lang: string; slug: string } }[];
+
+  try {
+    const langs = await fs.readdir(baseDir);
+    for (const lang of langs) {
+      const langDir = path.join(baseDir, lang);
+      const langStat = await fs.stat(langDir).catch(() => null);
+      if (!langStat || !langStat.isDirectory()) continue;
+
+      const slugs = await fs.readdir(langDir);
+      for (const slug of slugs) {
+        const slugDir = path.join(langDir, slug);
+        const slugStat = await fs.stat(slugDir).catch(() => null);
+        if (!slugStat || !slugStat.isDirectory()) continue;
+
+        entries.push({ params: { lang, slug } });
+      }
+    }
+  } catch (err) {
+    console.error('Erreur lors de la découverte des chemins statiques pour le site', siteId, err);
+  }
+
+  return entries;
 }
 
 const { lang, slug } = Astro.params;
-const siteId = 'ecofundrive'; // premier site branché, plus tard configurable
+const siteId = import.meta.env.SITE_ID || 'ecofundrive';
 
 let content: any = null;
 let seo: any = null;

@@ -70,6 +70,13 @@ export interface InternalLink {
   context: string;
 }
 
+export interface ImageMeta {
+  src?: string;
+  alt: string;
+  description?: string;
+  prompt?: string;
+}
+
 export interface GeneratedContent {
   title: string;
   meta_title: string;
@@ -80,6 +87,7 @@ export interface GeneratedContent {
   internal_links: InternalLink[];
   wordcount: number;
   base_css?: string;
+   hero_image?: ImageMeta;
 }
 
 export type SEOViolationSeverity = 'low' | 'medium' | 'high' | 'critical';

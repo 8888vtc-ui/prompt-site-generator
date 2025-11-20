@@ -33,6 +33,12 @@ SCHÉMA JSON ATTENDU
     "meta_title": "Title SEO (50-60 caractères)",
     "meta_description": "Meta description (150-160 caractères)",
     "introduction": "Résumé introductif",
+    "hero_image": {
+      "alt": "Texte alternatif descriptif pour l'image principale (avec le mot-clé si pertinent, une seule fois)",
+      "description": "Brève description de ce que doit montrer l'image (contexte interne, non affiché)",
+      "prompt": "Prompt détaillé pour générer l'image via un modèle d'image (sans noms de lieux, sans logos, sans visages reconnaissables)",
+      "src": "Chemin ou nom de fichier suggéré pour l'image (ex: /images/<slug>-hero-1.jpg)"
+    },
     "sections": [
       {
         "h2": "Titre de section",
@@ -96,12 +102,16 @@ RÈGLES QUALITÉ & SEO
   - SCORE : évalue la page sur 100. Un contenu vraiment excellent, prêt à publier, doit obtenir un score ≥ 90 et un grade "A". Réserve les grades A aux pages très abouties ; utilise B/C pour les pages moyennes.
   - Quand la page respecte tous les critères majeurs (grade "A" et aucune issue de sévérité high/critical), ne donne jamais un score inférieur à 95.
   - SEO : respecte les bonnes pratiques 2025 (H1 unique, maillage interne riche, FAQ utile, structure claire, lisibilité correcte).
-- CSS DE BASE (base_css) :
-  - Génère dans "content.base_css" une feuille de style CSS complète qui définit le look & feel de la page/site.
+- CSS DE BASE (base_css)  - Génère dans "content.base_css" une feuille de style CSS complète qui définit le look & feel de la page/site.
   - Style au minimum : body, header, nav, main, section, h1, h2, h3, footer, liens, boutons et la classe ".hero-image".
   - Le CSS doit être autonome : uniquement des règles CSS valides, sans balise <style>, sans @import externe.
   - Utilise des couleurs et un style cohérents avec l'activité, le positionnement, la zone géographique et le template de page.
   - Privilégie une mise en page moderne, lisible, responsive (mobile-first) et avec un contraste suffisant pour l'accessibilité.
+- IMAGES (hero_image) :
+  - Propose une image principale cohérente avec le service, le ton et la localisation (ex : VTC premium, paysage méditerranéen, ambiance business) **sans afficher de noms de lieux ou de marques** sur l'image.
+  - Ne pas inclure de logos reconnaissables, ni de visages identifiables (préférer silhouettes, vues de dos ou cadrages neutres).
+  - Le champ "alt" doit être une phrase naturelle, descriptive, avec le mot-clé principal au maximum une fois.
+  - Le champ "prompt" doit décrire précisément la scène pour un générateur d'images (type Replicate), en interdisant explicitement noms de villes visibles, panneaux, marques, immatriculations lisibles.
 - Ne pas inventer de données légales ni de coordonnées.
 - Retourne UNIQUEMENT le JSON final, sans texte autour.
 - Le JSON doit être strictement valide (aucun commentaire, aucune virgule en trop).
