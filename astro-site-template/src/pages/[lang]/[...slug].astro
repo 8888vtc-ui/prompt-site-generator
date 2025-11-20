@@ -1,3 +1,4 @@
+---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SeoHead from '../../layouts/SeoHead.astro';
 import ServicePillarPage from '../../templates/ServicePillarPage.astro';
@@ -7,9 +8,10 @@ import PricingPage from '../../templates/PricingPage.astro';
 import ContactPage from '../../templates/ContactPage.astro';
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import { siteConfig } from '../../config/site';
 
 export async function getStaticPaths() {
-  const siteId = import.meta.env.SITE_ID || 'ecofundrive';
+  const siteId = siteConfig.siteId || 'ecofundrive';
   const baseDir = new URL(`../../content/sites/${siteId}/`, import.meta.url).pathname;
 
   const entries = [] as { params: { lang: string; slug: string } }[];
@@ -38,7 +40,7 @@ export async function getStaticPaths() {
 }
 
 const { lang, slug } = Astro.params;
-const siteId = import.meta.env.SITE_ID || 'ecofundrive';
+const siteId = siteConfig.siteId || 'ecofundrive';
 
 let content: any = null;
 let seo: any = null;
