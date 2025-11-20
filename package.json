@@ -1,0 +1,19 @@
+{
+  "name": "prompt-site-generator",
+  "version": "0.1.0",
+  "description": "Générateur de sites SEO multi-prompt (Claude contenu + GPT structuration/SEO)",
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "generate:demo": "tsx scripts/generate-demo-ecofundrive.ts"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.31.0",
+    "openai": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0"
+  }
+}
