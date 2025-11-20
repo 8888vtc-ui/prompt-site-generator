@@ -1,40 +1,30 @@
 import type { APIRoute } from 'astro';
-import fs from 'node:fs/promises';
-import path from 'node:path';
 import { siteConfig } from '../config/site';
 
-async function getAllUrls(): Promise<string[]> {
+// On utilise import.meta.glob pour découvrir tous les content.json générés
+// sans accéder directement au système de fichiers de dist/.
+const contentModules = import.meta.glob('../content/sites/*/*/*/content.json');
+
+export const GET: APIRoute = async () => {
   const siteId = siteConfig.siteId || 'ecofundrive';
   const siteUrl = (siteConfig.siteUrl || 'https://example.com').replace(/\/$/, '');
 
-  const baseDir = new URL(`../content/sites/${siteId}/`, import.meta.url).pathname;
   const urls: string[] = [];
 
-  try {
-    const langs = await fs.readdir(baseDir);
-    for (const lang of langs) {
-      const langDir = path.join(baseDir, lang);
-      const langStat = await fs.stat(langDir).catch(() => null);
-      if (!langStat || !langStat.isDirectory()) continue;
+  for (const filePath in contentModules) {
+    const segments = filePath.split('/');
+    const sitesIndex = segments.indexOf('sites');
+    if (sitesIndex === -1) continue;
 
-      const slugs = await fs.readdir(langDir);
-      for (const slug of slugs) {
-        const slugDir = path.join(langDir, slug);
-        const slugStat = await fs.stat(slugDir).catch(() => null);
-        if (!slugStat || !slugStat.isDirectory()) continue;
+    const currentSiteId = segments[sitesIndex + 1];
+    const lang = segments[sitesIndex + 2];
+    const slug = segments[sitesIndex + 3];
 
-        urls.push(`${siteUrl}/${lang}/${slug}`);
-      }
+    if (currentSiteId === siteId) {
+      urls.push(`${siteUrl}/${lang}/${slug}`);
     }
-  } catch (err) {
-    console.error('Erreur lors de la génération du sitemap.xml', err);
   }
 
-  return urls;
-}
-
-export const GET: APIRoute = async () => {
-  const urls = await getAllUrls();
   const xmlItems = urls
     .map((loc) => `  <url>\n    <loc>${loc}</loc>\n  </url>`)
     .join('\n');

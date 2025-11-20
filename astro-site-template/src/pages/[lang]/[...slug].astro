@@ -6,34 +6,27 @@ import LocationPage from '../../templates/LocationPage.astro';
 import ServiceSecondaryPage from '../../templates/ServiceSecondaryPage.astro';
 import PricingPage from '../../templates/PricingPage.astro';
 import ContactPage from '../../templates/ContactPage.astro';
-import fs from 'node:fs/promises';
-import path from 'node:path';
 import { siteConfig } from '../../config/site';
+
+const contentModules = import.meta.glob('../../content/sites/*/*/*/content.json');
+const seoModules = import.meta.glob('../../content/sites/*/*/*/seo.json');
 
 export async function getStaticPaths() {
   const siteId = siteConfig.siteId || 'ecofundrive';
-  const baseDir = new URL(`../../content/sites/${siteId}/`, import.meta.url).pathname;
+  const entries: { params: { lang: string; slug: string } }[] = [];
 
-  const entries = [] as { params: { lang: string; slug: string } }[];
+  for (const filePath in contentModules) {
+    const segments = filePath.split('/');
+    const sitesIndex = segments.indexOf('sites');
+    if (sitesIndex === -1) continue;
 
-  try {
-    const langs = await fs.readdir(baseDir);
-    for (const lang of langs) {
-      const langDir = path.join(baseDir, lang);
-      const langStat = await fs.stat(langDir).catch(() => null);
-      if (!langStat || !langStat.isDirectory()) continue;
+    const currentSiteId = segments[sitesIndex + 1];
+    const lang = segments[sitesIndex + 2];
+    const slug = segments[sitesIndex + 3];
 
-      const slugs = await fs.readdir(langDir);
-      for (const slug of slugs) {
-        const slugDir = path.join(langDir, slug);
-        const slugStat = await fs.stat(slugDir).catch(() => null);
-        if (!slugStat || !slugStat.isDirectory()) continue;
-
-        entries.push({ params: { lang, slug } });
-      }
+    if (currentSiteId === siteId) {
+      entries.push({ params: { lang, slug } });
     }
-  } catch (err) {
-    console.error('Erreur lors de la découverte des chemins statiques pour le site', siteId, err);
   }
 
   return entries;
@@ -47,20 +40,20 @@ let seo: any = null;
 let template: string = 'service_pillar';
 
 if (lang && slug) {
-  try {
-    const contentModule = await import(
-      `../../content/sites/${siteId}/${lang}/${slug}/content.json`
-    );
-    const seoModule = await import(
-      `../../content/sites/${siteId}/${lang}/${slug}/seo.json`
-    );
-    content = contentModule.default;
-    seo = seoModule.default;
+  const contentKey = `../../content/sites/${siteId}/${lang}/${slug}/content.json`;
+  const seoKey = `../../content/sites/${siteId}/${lang}/${slug}/seo.json`;
+
+  if (contentModules[contentKey]) {
+    const mod: any = await (contentModules[contentKey] as any)();
+    content = mod.default;
     if (content && typeof content.template === 'string') {
       template = content.template;
     }
-  } catch (err) {
-    console.error('Erreur lors du chargement du contenu généré', err);
+  }
+
+  if (seoModules[seoKey]) {
+    const seoMod: any = await (seoModules[seoKey] as any)();
+    seo = seoMod.default;
   }
 }
 
