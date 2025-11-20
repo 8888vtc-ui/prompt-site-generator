@@ -60,9 +60,19 @@ const hasWhatsapp = !!siteConfig.whatsappUrl;
       loading="lazy"
     />
   )}
-  <section>
+  <section class="intro-section">
     <p>{content.introduction}</p>
   </section>
+
+  {internalLinks.length > 0 && (
+    <section class="quick-links">
+      {internalLinks.slice(0, 4).map((link) => (
+        <a href={link.url} class="quick-link-pill">
+          {link.anchor}
+        </a>
+      ))}
+    </section>
+  )}
 
   {hasWhatsapp && (
     <section class="cta-section">
@@ -97,12 +107,30 @@ const hasWhatsapp = !!siteConfig.whatsappUrl;
   {content.faq.length > 0 && (
     <section>
       <h2>FAQ</h2>
-      {content.faq.map((item) => (
-        <section>
-          <h3>{item.question}</h3>
-          <p>{item.answer}</p>
-        </section>
-      ))}
+      <div class="faq-list">
+        {content.faq.map((item) => (
+          <article class="faq-item">
+            <h3>{item.question}</h3>
+            <p>{item.answer}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {hasWhatsapp && (
+    <section class="page-footer-cta">
+      <p>
+        Une question ou un projet de trajet ? Contactez-nous directement sur WhatsApp.
+      </p>
+      <a
+        href={siteConfig.whatsappUrl}
+        class="btn-whatsapp-large"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {siteConfig.primaryCtaLabel}
+      </a>
     </section>
   )}
 </main>
