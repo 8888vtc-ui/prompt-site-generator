@@ -1,0 +1,55 @@
+{
+  "score": 93,
+  "grade": "A",
+  "issues": [
+    {
+      "code": "keyword_density_estimee",
+      "message": "La densité du mot-clé principal est probablement légèrement supérieure à 1,5 %, surveiller pour éviter tout risque de sur-optimisation.",
+      "severity": "medium"
+    },
+    {
+      "code": "readability_avancee",
+      "message": "Le niveau de langage est soutenu, ce qui peut être légèrement complexe pour certains utilisateurs non francophones natifs.",
+      "severity": "low"
+    }
+  ],
+  "metrics": {
+    "titleLength": 58,
+    "metaDescriptionLength": 157,
+    "headingCount": {
+      "h1": 1,
+      "h2": 7,
+      "h3": 19
+    },
+    "wordCount": 2140,
+    "keywordDensity": 1.7,
+    "internalLinks": 8,
+    "externalLinks": 2,
+    "readabilityScore": 62
+  },
+  "recommendations": [
+    "Réduire légèrement la fréquence exacte de l’expression « chauffeur privé Côte d’Azur » en privilégiant quelques variantes sémantiques supplémentaires (chauffeur VTC, voiture avec chauffeur, transport privé premium).",
+    "Ajouter des données structurées FAQPage basées sur la section FAQ pour améliorer la visibilité dans les résultats enrichis.",
+    "Prévoir des ancres de navigation internes (sommaire ou liens d’ancrage) vers les grandes sections : services, déroulé, zones desservies, réservation.",
+    "Intégrer un bloc de preuve sociale (avis clients, références entreprises, événements couverts) pour renforcer la crédibilité et le taux de conversion.",
+    "Optimiser les images futures de la page (balises alt incluant le mot-clé et variantes, poids compressé) pour améliorer le SEO et les Core Web Vitals.",
+    "Prévoir un CTA clair et répété vers la réservation et le contact dans le template (boutons visibles en haut de page et en fin de sections clés)."
+  ],
+  "passedChecks": [
+    "h1_unique",
+    "title_length_ok",
+    "meta_description_length_ok",
+    "keyword_in_title",
+    "keyword_in_h1",
+    "keyword_in_intro",
+    "structured_headings",
+    "sufficient_word_count",
+    "internal_linking_rich",
+    "external_links_present",
+    "faq_present"
+  ],
+  "failedChecks": [
+    "keyword_density_basse",
+    "readability_simplifiable"
+  ]
+}

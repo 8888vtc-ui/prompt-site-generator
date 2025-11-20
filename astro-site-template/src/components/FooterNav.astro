@@ -1,0 +1,24 @@
+---
+interface InternalLink {
+  anchor: string;
+  url: string;
+  context?: string;
+}
+
+interface Props {
+  links?: InternalLink[];
+}
+
+const { links = [] } = Astro.props as Props;
+---
+<footer>
+  <nav>
+    <ul>
+      {links.map((link) => (
+        <li>
+          <a href={link.url}>{link.anchor}</a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</footer>

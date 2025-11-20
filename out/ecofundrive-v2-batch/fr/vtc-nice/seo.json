@@ -1,0 +1,38 @@
+{
+  "score": 97,
+  "grade": "A",
+  "issues": [],
+  "metrics": {
+    "titleLength": 59,
+    "metaDescriptionLength": 153,
+    "headingCount": {
+      "h1": 1,
+      "h2": 7,
+      "h3": 17
+    },
+    "wordCount": 1780,
+    "keywordDensity": 1.2,
+    "internalLinks": 7,
+    "externalLinks": 0,
+    "readabilityScore": 66
+  },
+  "recommendations": [
+    "Ajouter des liens sortants vers des sites d’autorité locaux (ex : Office de Tourisme de Nice, Aéroport Nice Côte d’Azur).",
+    "Optimiser certains paragraphes pour une lisibilité encore plus fluide (phrases plus courtes).",
+    "Envisager d’ajouter des témoignages clients ou des preuves sociales pour renforcer la crédibilité.",
+    "Proposer un CTA visuel (bouton) plus mis en avant pour la réservation.",
+    "Vérifier la performance mobile réelle et la vitesse de chargement des images."
+  ],
+  "passedChecks": [
+    "h1_unique",
+    "structure_hierarchique_claire",
+    "meta_title_optimise",
+    "meta_description_optimisee",
+    "maillage_interne_riche",
+    "faq_pertinente",
+    "densite_mot_cle_ok",
+    "longueur_contenu_ok",
+    "lisibilite_correcte"
+  ],
+  "failedChecks": []
+}

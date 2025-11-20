@@ -2,6 +2,7 @@ import type { PipelineInput } from '../types.js';
 
 export function buildGptStructureSeoPrompt(rawText: string, input: PipelineInput): string {
   const { page, url } = input;
+  const template = page.template || 'service_pillar';
 
   return `
 Tu es un expert SEO technique et on-page.
@@ -17,6 +18,7 @@ PARAMÈTRES
 - Mot-clé principal : ${page.keyword}
 - Langue : ${page.language}
 - Type de page : ${page.pageType}
+- Template : ${template}
 - Localisation : ${page.location}
 - URL cible : ${url}
 - Longueur cible approx. : ${page.wordcount} mots
@@ -46,7 +48,8 @@ SCHÉMA JSON ATTENDU
     "internal_links": [
       { "anchor": "Texte du lien", "url": "/chemin/relatif", "context": "Phrase complète avec le lien" }
     ],
-    "wordcount": 0
+    "wordcount": 0,
+    "base_css": "Feuille de style CSS complète pour la page (voir instructions CSS ci-dessous)"
   },
   "seo": {
     "score": 0,
@@ -76,9 +79,29 @@ SCHÉMA JSON ATTENDU
   }
 }
 
-RÈGLES
-- STRUCTURE : reconstitue H1, sections H2/H3, FAQ à partir du texte.
-- SEO : respecte les bonnes pratiques 2025 (longueur title/meta, H1 unique, densité raisonnable, FAQ pertinente, maillage interne).
+RÈGLES QUALITÉ & SEO
+- STRUCTURE : reconstitue H1, sections H2/H3, FAQ à partir du texte, de manière logique et hiérarchisée en fonction du template.
+- ADAPTATION AU TEMPLATE :
+  - homepage : mettre l'accent sur le hero, les blocs de services, la preuve sociale et les liens vers les pages clés (services, tarifs, contact, à propos).
+  - service_pillar / service_secondary : structurer comme une page de service (présentation, avantages, déroulé, preuves, FAQ, CTA).
+  - location : reprendre la logique de service mais ancrée fortement dans la ville/zone donnée.
+  - pricing : insister sur la lisibilité des offres, ce qui est inclus/non inclus, sans inventer de prix précis si non fournis.
+  - contact : mettre en avant les moyens de contact et le déroulé après la prise de contact.
+  - about : axer sur l'histoire, la mission, les valeurs et la crédibilité de la marque.
+  - faq : organiser les questions/réponses par thème, même si le corps de page est plus court.
+  - legal : conserver une structure simple, claire, sans inventer de données juridiques.
+- MOT-CLÉ : intègre le mot-clé principal dans le title, le H1, l'introduction, quelques H2/H3 et de manière naturelle dans le corps du texte avec une densité cible autour de 1 à 1,5 % (jamais de bourrage).
+- META : le "title" fait 50 à 60 caractères, la "meta_description" entre 150 et 155 caractères (ne dépasse jamais 160).
+- LIENS INTERNES : fournis AU MOINS 5 liens internes pertinents dans "internal_links" (idéalement 6 à 8) permettant de construire un menu principal et un menu de bas de page (ex : réservation, tarifs/offres, services clés, pages localités, pages à propos, etc.).
+  - SCORE : évalue la page sur 100. Un contenu vraiment excellent, prêt à publier, doit obtenir un score ≥ 90 et un grade "A". Réserve les grades A aux pages très abouties ; utilise B/C pour les pages moyennes.
+  - Quand la page respecte tous les critères majeurs (grade "A" et aucune issue de sévérité high/critical), ne donne jamais un score inférieur à 95.
+  - SEO : respecte les bonnes pratiques 2025 (H1 unique, maillage interne riche, FAQ utile, structure claire, lisibilité correcte).
+- CSS DE BASE (base_css) :
+  - Génère dans "content.base_css" une feuille de style CSS complète qui définit le look & feel de la page/site.
+  - Style au minimum : body, header, nav, main, section, h1, h2, h3, footer, liens, boutons et la classe ".hero-image".
+  - Le CSS doit être autonome : uniquement des règles CSS valides, sans balise <style>, sans @import externe.
+  - Utilise des couleurs et un style cohérents avec l'activité, le positionnement, la zone géographique et le template de page.
+  - Privilégie une mise en page moderne, lisible, responsive (mobile-first) et avec un contraste suffisant pour l'accessibilité.
 - Ne pas inventer de données légales ni de coordonnées.
 - Retourne UNIQUEMENT le JSON final, sans texte autour.
 - Le JSON doit être strictement valide (aucun commentaire, aucune virgule en trop).

@@ -1,10 +1,22 @@
+import 'dotenv/config';
 import OpenAI from 'openai';
 import type { PipelineInput, GeneratedContent, SEOResult, SEOIssue } from '../types.js';
 import { buildGptStructureSeoPrompt } from '../prompts/gptStructureSeo.js';
 
+const openaiApiKey = process.env.OPENAI_API_KEY;
+
+if (!openaiApiKey) {
+  throw new Error(
+    'OPENAI_API_KEY manquante. Définis-la dans tes variables d\'environnement ou dans un fichier .env à la racine de prompt-site-generator.'
+  );
+}
+
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY || ''
+  apiKey: openaiApiKey
 });
+
+const STRUCTURE_MODEL = process.env.OPENAI_GPT_MODEL_STRUCTURE || 'gpt-4.1';
+const OPTIMIZE_MODEL = process.env.OPENAI_GPT_MODEL_OPTIMIZE || STRUCTURE_MODEL;
 
 export async function structureAndEvaluateWithGPT(
   rawText: string,
@@ -13,7 +25,7 @@ export async function structureAndEvaluateWithGPT(
   const prompt = buildGptStructureSeoPrompt(rawText, input);
 
   const response = await openai.chat.completions.create({
-    model: 'gpt-4.1-mini',
+    model: STRUCTURE_MODEL,
     messages: [{ role: 'user', content: prompt }],
     temperature: 0.3
   });
@@ -49,7 +61,7 @@ RÈGLES:
 `.trim();
 
   const response = await openai.chat.completions.create({
-    model: 'gpt-4.1-mini',
+    model: OPTIMIZE_MODEL,
     messages: [{ role: 'user', content: prompt }],
     temperature: 0.4
   });

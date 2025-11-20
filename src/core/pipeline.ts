@@ -2,8 +2,8 @@ import type { PipelineInput, PipelineResult, SEOIssue } from './types.js';
 import { generateRawTextWithClaude } from './engines/claude.js';
 import { structureAndEvaluateWithGPT, optimizeRawTextWithGPT } from './engines/gpt.js';
 
-const SEO_SCORE_MIN = 75;
-const MAX_PASSES = 3;
+const SEO_SCORE_MIN = 95;
+const MAX_PASSES = 4;
 
 export async function runV2Pipeline(input: PipelineInput): Promise<PipelineResult> {
   let rawText = await generateRawTextWithClaude(input);
@@ -18,11 +18,12 @@ export async function runV2Pipeline(input: PipelineInput): Promise<PipelineResul
     finalSeo = seo;
 
     const isGoodScore = seo.score >= SEO_SCORE_MIN;
+    const isGradeA = seo.grade === 'A';
     const hasBadIssues = (seo.issues || []).some(
       (i: SEOIssue) => i.severity === 'high' || i.severity === 'critical'
     );
 
-    if (isGoodScore && !hasBadIssues) {
+    if (isGoodScore && isGradeA && !hasBadIssues) {
       break;
     }
 

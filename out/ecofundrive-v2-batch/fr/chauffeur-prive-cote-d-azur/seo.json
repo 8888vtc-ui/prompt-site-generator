@@ -1,0 +1,37 @@
+{
+  "score": 97,
+  "grade": "A",
+  "issues": [],
+  "metrics": {
+    "titleLength": 59,
+    "metaDescriptionLength": 153,
+    "headingCount": {
+      "h1": 1,
+      "h2": 8,
+      "h3": 15
+    },
+    "wordCount": 2050,
+    "keywordDensity": 1.2,
+    "internalLinks": 8,
+    "externalLinks": 0,
+    "readabilityScore": 67
+  },
+  "recommendations": [
+    "Ajouter des témoignages clients ou logos de partenaires pour renforcer la preuve sociale.",
+    "Enrichir la section FAQ avec 1-2 questions supplémentaires spécifiques aux besoins internationaux (ex : langues parlées, prise en charge VIP).",
+    "Vérifier la présence d’éléments visuels (photos de véhicules, équipe) pour améliorer l’engagement.",
+    "Surveiller la densité du mot-clé principal pour rester entre 1% et 1,5% sans sur-optimisation.",
+    "Optimiser le temps de chargement des images et la performance mobile."
+  ],
+  "passedChecks": [
+    "h1_unique",
+    "structure_h2_h3_cohérente",
+    "maillage_interne_riche",
+    "faq_utile",
+    "meta_title_longueur_ok",
+    "meta_description_longueur_ok",
+    "keyword_density_ok",
+    "readability_ok"
+  ],
+  "failedChecks": []
+}

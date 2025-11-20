@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SeoHead from '../../layouts/SeoHead.astro';
+import ServicePillarPage from '../../templates/ServicePillarPage.astro';
+import LocationPage from '../../templates/LocationPage.astro';
+import ServiceSecondaryPage from '../../templates/ServiceSecondaryPage.astro';
+import PricingPage from '../../templates/PricingPage.astro';
+import ContactPage from '../../templates/ContactPage.astro';
+
+const { lang, slug } = Astro.params;
+const siteId = 'ecofundrive'; // premier site branché, plus tard configurable
+
+let content: any = null;
+let seo: any = null;
+let template: string = 'service_pillar';
+
+if (lang && slug) {
+  try {
+    const contentModule = await import(
+      `../../content/sites/${siteId}/${lang}/${slug}/content.json`
+    );
+    const seoModule = await import(
+      `../../content/sites/${siteId}/${lang}/${slug}/seo.json`
+    );
+    content = contentModule.default;
+    seo = seoModule.default;
+    if (content && typeof content.template === 'string') {
+      template = content.template;
+    }
+  } catch (err) {
+    console.error('Erreur lors du chargement du contenu généré', err);
+  }
+}
+
+let PageTemplate = ServicePillarPage;
+if (template === 'location') {
+  PageTemplate = LocationPage;
+} else if (template === 'service_secondary') {
+  PageTemplate = ServiceSecondaryPage;
+} else if (template === 'pricing') {
+  PageTemplate = PricingPage;
+} else if (template === 'contact') {
+  PageTemplate = ContactPage;
+}
+
+const pageTitle = content?.meta_title || 'Page générée';
+const pageDescription = content?.meta_description || '';
+---
+
+<BaseLayout lang={lang || 'fr'}>
+  <SeoHead slot="head" title={pageTitle} description={pageDescription} />
+  {content?.base_css && (
+    <style slot="head" set:html={content.base_css}></style>
+  )}
+  {content ? (
+    <PageTemplate content={content} seo={seo} />
+  ) : (
+    <main>
+      <h1>Page non trouvée</h1>
+      <p>Le contenu généré pour cette URL est introuvable ou pas encore disponible.</p>
+    </main>
+  )}
+</BaseLayout>

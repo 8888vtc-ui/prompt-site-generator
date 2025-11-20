@@ -1,0 +1,44 @@
+{
+  "score": 94,
+  "grade": "A",
+  "issues": [
+    {
+      "code": "keyword_density_basse",
+      "message": "La densité du mot-clé principal est légèrement inférieure à 1,5 %.",
+      "severity": "low"
+    }
+  ],
+  "metrics": {
+    "titleLength": 59,
+    "metaDescriptionLength": 154,
+    "headingCount": {
+      "h1": 1,
+      "h2": 6,
+      "h3": 15
+    },
+    "wordCount": 2460,
+    "keywordDensity": 1.1,
+    "internalLinks": 8,
+    "externalLinks": 0,
+    "readabilityScore": 63
+  },
+  "recommendations": [
+    "Renforcer légèrement la présence du mot-clé principal dans certains paragraphes secondaires.",
+    "Ajouter des liens externes vers des partenaires ou sites institutionnels locaux pour renforcer la crédibilité.",
+    "Optimiser la lisibilité de certains paragraphes pour améliorer le score Flesch.",
+    "Ajouter des CTA visibles pour la réservation et le contact tout au long de la page."
+  ],
+  "passedChecks": [
+    "h1_unique",
+    "structure_claire",
+    "meta_title_optimale",
+    "meta_description_optimale",
+    "maillage_interne_riche",
+    "faq_utile",
+    "longueur_contenu_ok",
+    "heading_hierarchy"
+  ],
+  "failedChecks": [
+    "keyword_density_basse"
+  ]
+}

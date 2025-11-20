@@ -1,0 +1,41 @@
+{
+  "score": 94,
+  "grade": "A",
+  "issues": [
+    {
+      "code": "meta_description_length",
+      "message": "La meta description atteint 155 caractères, ce qui est optimal mais nécessite de vérifier qu’elle ne soit pas tronquée dans certains affichages.",
+      "severity": "low"
+    }
+  ],
+  "metrics": {
+    "titleLength": 59,
+    "metaDescriptionLength": 155,
+    "headingCount": {
+      "h1": 1,
+      "h2": 5,
+      "h3": 13
+    },
+    "wordCount": 2020,
+    "keywordDensity": 1.2,
+    "internalLinks": 8,
+    "externalLinks": 0,
+    "readabilityScore": 62
+  },
+  "recommendations": [
+    "Vérifier la meta description sur mobile pour éviter tout troncage.",
+    "Ajouter éventuellement un ou deux liens externes vers des sites d’autorité (ex : offices de tourisme locaux) pour renforcer la crédibilité.",
+    "Surveiller la densité du mot-clé sur les futures mises à jour pour rester dans la fourchette optimale.",
+    "Enrichir la FAQ si de nouveaux besoins clients apparaissent.",
+    "Optimiser les images avec des balises alt intégrant le mot-clé principal."
+  ],
+  "passedChecks": [
+    "h1_unique",
+    "structure_claire",
+    "maillage_interne_riche",
+    "faq_pertinente",
+    "densite_mot_cle_optimale",
+    "longueur_contenu"
+  ],
+  "failedChecks": []
+}

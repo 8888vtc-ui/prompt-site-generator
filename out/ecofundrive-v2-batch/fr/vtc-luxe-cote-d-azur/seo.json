@@ -1,0 +1,38 @@
+{
+  "score": 97,
+  "grade": "A",
+  "issues": [],
+  "metrics": {
+    "titleLength": 58,
+    "metaDescriptionLength": 154,
+    "headingCount": {
+      "h1": 1,
+      "h2": 5,
+      "h3": 13
+    },
+    "wordCount": 2410,
+    "keywordDensity": 1.2,
+    "internalLinks": 8,
+    "externalLinks": 0,
+    "readabilityScore": 67
+  },
+  "recommendations": [
+    "Optimiser la lisibilité mobile en aérant les paragraphes.",
+    "Ajouter des témoignages clients ou preuves sociales pour renforcer la crédibilité.",
+    "Enrichir la FAQ avec des questions spécifiques sur la sécurité et les modalités de paiement.",
+    "Inclure des CTA visibles en haut et en bas de page pour maximiser la conversion.",
+    "Surveiller régulièrement la densité du mot-clé pour éviter toute fluctuation."
+  ],
+  "passedChecks": [
+    "h1_unique",
+    "structure_h2_h3_coherente",
+    "maillage_interne_riche",
+    "faq_pertinente",
+    "meta_title_optimise",
+    "meta_description_optimisee",
+    "densite_mot_cle_optimale",
+    "longueur_contenu_optimale",
+    "lisibilite_correcte"
+  ],
+  "failedChecks": []
+}

@@ -8,6 +8,17 @@ export type PageType =
   | 'pricing'
   | 'booking';
 
+export type PageTemplate =
+  | 'homepage'
+  | 'service_pillar'
+  | 'service_secondary'
+  | 'location'
+  | 'pricing'
+  | 'contact'
+  | 'about'
+  | 'faq'
+  | 'legal';
+
 export interface SiteProfile {
   id: string;
   name: string;
@@ -31,6 +42,7 @@ export interface PagePlanEntry {
   keyword: string;
   language: Language;
   pageType: PageType;
+  template?: PageTemplate;
   location: string;
   authority: boolean;
   wordcount: number;
@@ -67,6 +79,7 @@ export interface GeneratedContent {
   faq: FAQItem[];
   internal_links: InternalLink[];
   wordcount: number;
+  base_css?: string;
 }
 
 export type SEOViolationSeverity = 'low' | 'medium' | 'high' | 'critical';

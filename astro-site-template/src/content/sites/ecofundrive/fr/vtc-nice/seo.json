@@ -1,0 +1,42 @@
+{
+  "score": 94,
+  "grade": "A",
+  "issues": [
+    {
+      "code": "keyword_density_legere",
+      "message": "La densité du mot-clé principal est légèrement supérieure à 1,5% dans certains passages, mais reste naturelle.",
+      "severity": "low"
+    }
+  ],
+  "metrics": {
+    "titleLength": 59,
+    "metaDescriptionLength": 155,
+    "headingCount": {
+      "h1": 1,
+      "h2": 7,
+      "h3": 15
+    },
+    "wordCount": 1740,
+    "keywordDensity": 1.4,
+    "internalLinks": 8,
+    "externalLinks": 0,
+    "readabilityScore": 62
+  },
+  "recommendations": [
+    "Veiller à ne pas dépasser 1,5% de densité du mot-clé sur l’ensemble de la page.",
+    "Ajouter des liens externes vers des ressources officielles (ex : Office du tourisme de Nice) pour renforcer la crédibilité.",
+    "Optimiser la lisibilité en aérant davantage les paragraphes longs.",
+    "Ajouter des visuels optimisés (avec balises alt incluant le mot-clé) pour améliorer l’expérience utilisateur.",
+    "Vérifier la rapidité de chargement de la page et l’optimisation mobile."
+  ],
+  "passedChecks": [
+    "h1_unique",
+    "structure_hierarchique_claire",
+    "meta_title_optimise",
+    "meta_description_optimisee",
+    "maillage_interne_riche",
+    "faq_pertinente",
+    "longueur_contenu_optimale"
+  ],
+  "failedChecks": []
+}

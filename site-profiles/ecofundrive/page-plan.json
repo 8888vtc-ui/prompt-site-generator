@@ -1,0 +1,68 @@
+[
+  {
+    "slug": "fr/chauffeur-prive-cote-d-azur",
+    "keyword": "chauffeur privé côte d'azur",
+    "language": "fr",
+    "pageType": "pillar",
+    "template": "service_pillar",
+    "location": "Côte d'Azur (Marseille, Saint-Tropez, Nice, Cannes, Monaco)",
+    "authority": true,
+    "wordcount": 2000
+  },
+  {
+    "slug": "fr/vtc-luxe-cote-d-azur",
+    "keyword": "vtc luxe côte d'azur",
+    "language": "fr",
+    "pageType": "pillar",
+    "template": "service_pillar",
+    "location": "Côte d'Azur (Nice, Cannes, Monaco)",
+    "authority": true,
+    "wordcount": 2400
+  },
+
+  {"slug": "fr/vtc-nice", "keyword": "vtc nice", "language": "fr", "pageType": "city", "template": "location", "location": "Nice", "authority": false, "wordcount": 1700},
+  {"slug": "fr/chauffeur-prive-cannes", "keyword": "chauffeur privé cannes", "language": "fr", "pageType": "city", "template": "location", "location": "Cannes", "authority": false, "wordcount": 2200},
+  {"slug": "fr/vtc-monaco", "keyword": "vtc monaco", "language": "fr", "pageType": "city", "template": "location", "location": "Monaco", "authority": false, "wordcount": 2200},
+  {"slug": "fr/vtc-antibes", "keyword": "vtc antibes", "language": "fr", "pageType": "city", "template": "location", "location": "Antibes", "authority": false, "wordcount": 1600},
+  {"slug": "fr/vtc-saint-tropez", "keyword": "vtc saint tropez", "language": "fr", "pageType": "city", "template": "location", "location": "Saint-Tropez", "authority": false, "wordcount": 2000},
+  {"slug": "fr/vtc-juan-les-pins", "keyword": "vtc juan les pins", "language": "fr", "pageType": "city", "template": "location", "location": "Juan-les-Pins", "authority": false, "wordcount": 1500},
+  {"slug": "fr/vtc-villefranche-sur-mer", "keyword": "vtc villefranche sur mer", "language": "fr", "pageType": "city", "template": "location", "location": "Villefranche-sur-Mer", "authority": false, "wordcount": 1800},
+  {"slug": "fr/vtc-grasse", "keyword": "vtc grasse", "language": "fr", "pageType": "city", "template": "location", "location": "Grasse", "authority": false, "wordcount": 1800},
+  {"slug": "fr/vtc-menton", "keyword": "vtc menton", "language": "fr", "pageType": "city", "template": "location", "location": "Menton", "authority": false, "wordcount": 1800},
+
+  {"slug": "fr/transfert-aeroport-nice", "keyword": "transfert aéroport nice", "language": "fr", "pageType": "transfer", "template": "service_secondary", "location": "Nice Aéroport", "authority": false, "wordcount": 2200},
+  {"slug": "fr/navette-aeroport-nice-cote-d-azur", "keyword": "navette aéroport nice côte d'azur", "language": "fr", "pageType": "transfer", "template": "service_secondary", "location": "Nice Aéroport / Côte d'Azur", "authority": false, "wordcount": 2000},
+  {"slug": "fr/transfert-aeroport-nice-cannes", "keyword": "navette aéroport nice cannes", "language": "fr", "pageType": "transfer", "template": "service_secondary", "location": "Nice ⇄ Cannes", "authority": false, "wordcount": 2000},
+  {"slug": "fr/transfert-aeroport-nice-monaco", "keyword": "transfert aéroport nice monaco", "language": "fr", "pageType": "transfer", "template": "service_secondary", "location": "Nice ⇄ Monaco", "authority": false, "wordcount": 2000},
+  {"slug": "fr/chauffeur-prive-aeroport-nice", "keyword": "chauffeur privé aéroport nice", "language": "fr", "pageType": "transfer", "template": "service_secondary", "location": "Nice Aéroport", "authority": false, "wordcount": 2000},
+  {"slug": "fr/transfert-gare-nice-ville", "keyword": "transfert gare nice ville", "language": "fr", "pageType": "transfer", "template": "service_secondary", "location": "Nice (gare / centre-ville)", "authority": false, "wordcount": 1800},
+
+  {"slug": "fr/vtc-longue-distance-nice", "keyword": "vtc longue distance nice", "language": "fr", "pageType": "usage", "template": "service_secondary", "location": "Nice / France / Europe", "authority": false, "wordcount": 2200},
+  {"slug": "fr/vtc-mariage-cote-d-azur", "keyword": "vtc mariage côte d'azur", "language": "fr", "pageType": "usage", "template": "service_secondary", "location": "Côte d'Azur (Nice, Cannes, Saint-Tropez)", "authority": false, "wordcount": 2200},
+  {"slug": "fr/chauffeur-prive-mariage-cote-d-azur", "keyword": "chauffeur privé mariage côte d'azur", "language": "fr", "pageType": "usage", "template": "service_secondary", "location": "Côte d'Azur (Nice, Cannes, Monaco)", "authority": false, "wordcount": 2200},
+  {"slug": "fr/chauffeur-prive-evenement-cannes", "keyword": "chauffeur privé événement cannes", "language": "fr", "pageType": "usage", "template": "service_secondary", "location": "Cannes (événements, congrès)", "authority": false, "wordcount": 1800},
+  {"slug": "fr/vtc-festival-cannes", "keyword": "vtc festival cannes", "language": "fr", "pageType": "usage", "template": "service_secondary", "location": "Cannes (Festival du Film)", "authority": false, "wordcount": 2100},
+  {"slug": "fr/chauffeur-prive-grand-prix-monaco", "keyword": "chauffeur privé grand prix monaco", "language": "fr", "pageType": "usage", "template": "service_secondary", "location": "Monaco (Grand Prix F1)", "authority": false, "wordcount": 2100},
+  {"slug": "fr/vtc-business-nice", "keyword": "vtc business nice", "language": "fr", "pageType": "usage", "template": "service_secondary", "location": "Nice (business / corporate)", "authority": false, "wordcount": 2100},
+  {"slug": "fr/chauffeur-prive-tourisme-cote-d-azur", "keyword": "chauffeur privé tourisme côte d'azur", "language": "fr", "pageType": "usage", "template": "service_secondary", "location": "Côte d'Azur", "authority": false, "wordcount": 2200},
+  {"slug": "fr/visite-cote-d-azur-avec-chauffeur", "keyword": "visite côte d'azur avec chauffeur", "language": "fr", "pageType": "usage", "template": "service_secondary", "location": "Côte d'Azur", "authority": false, "wordcount": 2200},
+  {"slug": "fr/excursion-chauffeur-prive-nice", "keyword": "excursion chauffeur privé nice", "language": "fr", "pageType": "usage", "template": "service_secondary", "location": "Nice et alentours", "authority": false, "wordcount": 2000},
+
+  {"slug": "fr/prix-vtc-nice", "keyword": "prix vtc nice", "language": "fr", "pageType": "pricing", "template": "pricing", "location": "Nice", "authority": false, "wordcount": 2000},
+  {"slug": "fr/reserver-vtc-nice", "keyword": "réserver vtc nice", "language": "fr", "pageType": "booking", "template": "contact", "location": "Nice", "authority": false, "wordcount": 2000},
+
+  {"slug": "en/private-driver-french-riviera", "keyword": "private driver french riviera", "language": "en", "pageType": "pillar", "template": "service_pillar", "location": "French Riviera (Nice, Cannes, Monaco)", "authority": true, "wordcount": 2000},
+  {"slug": "en/luxury-chauffeur-french-riviera", "keyword": "luxury chauffeur french riviera", "language": "en", "pageType": "pillar", "template": "service_pillar", "location": "French Riviera (Nice, Cannes, Monaco)", "authority": true, "wordcount": 2300},
+
+  {"slug": "en/private-driver-nice", "keyword": "private driver nice", "language": "en", "pageType": "city", "template": "location", "location": "Nice", "authority": false, "wordcount": 2000},
+  {"slug": "en/private-driver-cannes", "keyword": "private driver cannes", "language": "en", "pageType": "city", "template": "location", "location": "Cannes", "authority": false, "wordcount": 2000},
+  {"slug": "en/private-driver-monaco", "keyword": "private driver monaco", "language": "en", "pageType": "city", "template": "location", "location": "Monaco", "authority": false, "wordcount": 2000},
+  {"slug": "en/private-driver-saint-tropez", "keyword": "private driver saint tropez", "language": "en", "pageType": "city", "template": "location", "location": "Saint-Tropez", "authority": false, "wordcount": 1650},
+
+  {"slug": "en/nice-airport-transfer", "keyword": "nice airport transfer", "language": "en", "pageType": "transfer", "template": "service_secondary", "location": "Nice Airport", "authority": false, "wordcount": 2000},
+  {"slug": "en/nice-airport-transfer-cannes", "keyword": "nice airport transfer cannes", "language": "en", "pageType": "transfer", "template": "service_secondary", "location": "Nice ⇄ Cannes", "authority": false, "wordcount": 1900},
+  {"slug": "en/nice-airport-transfer-monaco", "keyword": "nice airport transfer monaco", "language": "en", "pageType": "transfer", "template": "service_secondary", "location": "Nice ⇄ Monaco", "authority": false, "wordcount": 1900},
+  {"slug": "en/business-chauffeur-nice", "keyword": "business chauffeur nice", "language": "en", "pageType": "usage", "template": "service_secondary", "location": "Nice (business / corporate)", "authority": false, "wordcount": 2000},
+  {"slug": "en/long-distance-private-driver-nice", "keyword": "long distance private driver nice", "language": "en", "pageType": "usage", "template": "service_secondary", "location": "Nice / long distance", "authority": false, "wordcount": 2000},
+  {"slug": "en/wedding-chauffeur-french-riviera", "keyword": "wedding chauffeur french riviera", "language": "en", "pageType": "usage", "template": "service_secondary", "location": "French Riviera (Nice, Cannes, Saint-Tropez)", "authority": false, "wordcount": 2000}
+]

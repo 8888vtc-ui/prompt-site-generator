@@ -10,7 +10,7 @@ Ce document résume les règles SEO que le générateur doit respecter pour cons
   - Doit rester lisible et naturel (pas de bourrage de mots-clés).
 
 - **Meta description (meta_description)**
-  - Longueur cible : **150–160 caractères**.
+  - Longueur cible : **150–155 caractères** (ne jamais dépasser ~160).
   - Doit résumer le bénéfice principal + inciter à l’action.
   - Pas de promesse trompeuse ni de résultats garantis.
 
@@ -58,6 +58,8 @@ Ce document résume les règles SEO que le générateur doit respecter pour cons
   - Lien vers la page devis/réservation.
   - Éventuellement : liens croisés entre villes, transferts, usages.
 - Les ancres doivent être descriptives (pas de « cliquez ici »).
+  - Pour les pages stratégiques (piliers, pages tarifs/réservation), viser **au moins 5 à 8 liens internes**.
+  - Ces liens internes servent à alimenter à la fois le **menu principal** (header) et le **footer** dans les templates Astro.
 
 ## 6. Contenu local (SEO local)
 
@@ -89,13 +91,46 @@ Ce document résume les règles SEO que le générateur doit respecter pour cons
   - `issues[]` : liste de problèmes avec `severity` (low/medium/high/critical)
   - `metrics` : title/meta length, headings, wordcount, densité, liens, lisibilité…
 
-- La pipeline considère qu’une page est **acceptable** si :
-  - `score >= 75`
-  - aucune issue de sévérité `high` ou `critical`.
+- En **mode test premium actuel** (utilisé pour les démos et sites pilotes) :
+  - une page est considérée comme **valide** si :
+    - `score >= 95`,
+    - `grade === "A"`,
+    - aucune issue de sévérité `high` ou `critical`.
+  - la pipeline peut effectuer **jusqu’à 4 passes** d’optimisation maximum.
 
-- Si ces conditions ne sont pas remplies :
-  - la page passe par un **repassage GPT** guidé par la liste des issues,
-  - la pipeline boucle jusqu’à atteindre le seuil ou atteindre un nombre maximum de passes.
+- Stratégie prévue pour la **production** :
+  - réserver le mode A+ (score très élevé, plusieurs passes, contenu plus long) aux pages à **fort impact**
+    (piliers, pages tarifs, réservation, pages business clés),
+  - utiliser un mode plus léger pour la **longue traîne** (villes secondaires, certaines pages transferts/usage) :
+    contenu plus court, moins de passes, seuil de score légèrement inférieur mais toujours conforme au guide.
+
+## 9. Backlinks 2025 et rôle de l’IA
+
+En 2025, les signaux de popularité restent importants, mais les stratégies de backlinks doivent être **crédibles** et alignées sur l’IA générative :
+
+- **Liens locaux réels** (prioritaires pour les petites boîtes locales) :
+  - sites de la ville/région (mairies, offices de tourisme, blogs locaux),
+  - partenaires métiers (hôtels, restaurants, wedding planners, événements, associations),
+  - quelques annuaires locaux sérieux.
+  - L’IA aide à lister les acteurs et à rédiger des emails/propositions propres, mais l’envoi reste ciblé.
+- **Digital PR + contenus “assets”** :
+  - guides ou mini‑études utiles (ex. guide des transferts pour un événement local),
+  - l’IA sert à structurer ces contenus et à préparer des emails de pitch pour journalistes/blogueurs.
+- **Partenariats et co‑contenus** :
+  - contenus co‑brandés avec d’autres acteurs locaux (guides communs, checklists, pages partenaires),
+  - liens naturels depuis les pages "partenaires" et les guides partagés.
+- **Profils et annuaires filtrés** :
+  - fiches réellement consultées (Google Business Profile, plateformes métiers, quelques annuaires professionnels),
+  - descriptions harmonisées mais adaptées (l’IA aide à produire des variantes non dupliquées).
+- **Maillage interne solide** (complément indispensable) :
+  - les internal_links générés par la pipeline servent à construire un maillage clair entre pages services, pages villes, tarifs et contact.
+
+Interdictions explicites :
+- générer en masse des "guest posts IA" sur des blogs de faible qualité,
+- acheter des packs de liens sans cohérence métier/zone,
+- automatiser des emails de spam à grande échelle avec l’IA.
+
+L’IA doit être utilisée pour **préparer, accélérer et structurer** ces actions (recherche d’idées, rédaction de premières versions, harmonisation), pas pour fabriquer des schémas de liens artificiels.
 
 ---
 

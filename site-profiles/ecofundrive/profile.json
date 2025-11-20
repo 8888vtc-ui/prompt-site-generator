@@ -1,0 +1,17 @@
+{
+  "id": "ecofundrive-vtc-cote-azur",
+  "name": "ECOFUNDRIVE",
+  "domain": "https://www.ecofundrive.com",
+  "activity": "Service de VTC et chauffeur privé haut de gamme 100 % électrique sur la Côte d'Azur, de Marseille à Monaco (13/83/06), spécialisé dans les longs transferts de luxe et la mise à disposition.",
+  "positioning": "Chauffeur privé / VTC 100 % électrique haut de gamme sur la Côte d'Azur, spécialiste des longs transferts de luxe et de la mise à disposition de Marseille à Monaco.",
+  "zones": "Marseille, Toulon, Saint-Tropez, Fréjus, Cannes, Antibes, Nice, Monaco, Bouches-du-Rhône (13), Var (83), Alpes-Maritimes (06)",
+  "targetAudience": "Clients haut de gamme, voyageurs business, touristes internationaux, hôtels 4*/5*, événements, mariages et familles exigeantes.",
+  "tone": "premium",
+  "mainGoal": "devis",
+  "primaryCTA": "Demander un devis par WhatsApp",
+  "contactChannels": {
+    "whatsapp": true,
+    "phone": true,
+    "form": true
+  }
+}

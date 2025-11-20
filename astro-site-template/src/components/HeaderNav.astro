@@ -1,0 +1,25 @@
+---
+interface InternalLink {
+  anchor: string;
+  url: string;
+  context?: string;
+}
+
+interface Props {
+  links?: InternalLink[];
+}
+
+const { links = [] } = Astro.props as Props;
+const mainMenuLinks = links.slice(0, 5);
+---
+<header>
+  <nav>
+    <ul>
+      {mainMenuLinks.map((link) => (
+        <li>
+          <a href={link.url}>{link.anchor}</a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</header>

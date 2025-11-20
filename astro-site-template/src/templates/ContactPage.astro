@@ -1,0 +1,82 @@
+---
+import HeaderNav from '../components/HeaderNav.astro';
+import FooterNav from '../components/FooterNav.astro';
+
+interface SubSection {
+  title: string;
+  content: string;
+}
+
+interface Section {
+  h2: string;
+  content: string;
+  h3?: SubSection[];
+}
+
+interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+interface InternalLink {
+  anchor: string;
+  url: string;
+  context?: string;
+}
+
+interface Content {
+  title: string;
+  introduction: string;
+  sections: Section[];
+  faq: FAQItem[];
+  internal_links?: InternalLink[];
+}
+
+interface Props {
+  content: Content;
+  seo?: unknown;
+}
+
+const { content } = Astro.props as Props;
+const internalLinks = content.internal_links || [];
+---
+<HeaderNav links={internalLinks} />
+<main>
+  <h1>{content.title}</h1>
+  <img
+    src="https://images.pexels.com/photos/1181230/pexels-photo-1181230.jpeg?auto=compress&cs=tinysrgb&w=1200"
+    alt="Client en train de contacter le chauffeur privé"
+    class="hero-image"
+    loading="lazy"
+  />
+  <section>
+    <p>{content.introduction}</p>
+  </section>
+
+  {content.sections.map((section) => (
+    <section>
+      <h2>{section.h2}</h2>
+      <p>{section.content}</p>
+      {section.h3 &&
+        section.h3.map((sub) => (
+          <>
+            <h3>{sub.title}</h3>
+            <p>{sub.content}</p>
+          </>
+        ))}
+    </section>
+  ))}
+
+  {content.faq.length > 0 && (
+    <section>
+      <h2>FAQ</h2>
+      {content.faq.map((item) => (
+        <section>
+          <h3>{item.question}</h3>
+          <p>{item.answer}</p>
+        </section>
+      ))}
+    </section>
+  )}
+</main>
+<FooterNav links={internalLinks} />
