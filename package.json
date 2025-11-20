@@ -8,7 +8,7 @@
     "generate:demo": "tsx scripts/generate-demo-ecofundrive.ts",
     "generate:batch": "tsx scripts/generate-ecofundrive-batch.ts",
     "sync:ecofundrive:astro": "tsx scripts/sync-ecofundrive-to-astro.ts",
-    "build:netlify": "npm run generate:batch && npm run sync:ecofundrive:astro && cd astro-site-template && npm install && npm run build"
+    "build:netlify": "cd astro-site-template && npm install && npm run build"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.31.0",
